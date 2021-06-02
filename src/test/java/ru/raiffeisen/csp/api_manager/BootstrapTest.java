@@ -1,4 +1,4 @@
-package ru.raiffeisen;
+package ru.raiffeisen.csp.api_manager;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.ProducerTemplate;
@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @CamelSpringBootTest
-public class ApplicationTest {
+public class BootstrapTest {
 
 	@Autowired
 	private CamelContext camelContext;

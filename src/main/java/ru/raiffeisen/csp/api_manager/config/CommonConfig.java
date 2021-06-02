@@ -1,4 +1,4 @@
-package ru.raiffeisen.config;
+package ru.raiffeisen.csp.api_manager.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

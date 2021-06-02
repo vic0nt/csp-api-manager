@@ -1,6 +1,5 @@
-package ru.raiffeisen.routes;
+package ru.raiffeisen.csp.api_manager.routes;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 

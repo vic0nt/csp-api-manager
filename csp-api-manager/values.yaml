@@ -1,0 +1,4 @@
+replicaCount: 1
+image:
+  name: "artifactory.raiffeisen.ru/csp-docker/temp/ping_pipe"
+  tag: 3

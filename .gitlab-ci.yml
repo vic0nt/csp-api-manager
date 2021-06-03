@@ -1,0 +1,55 @@
+.create_time_now_var: &create_time_now
+  - TIME_NOW=$(echo $CI_COMMIT_TIMESTAMP | sed s/':'/'_'/g | cut -d '+' -f 1 | sed s/T/'_'/g)
+  - |
+    IMAGE_NAME="csp-api-manager"
+    if [[ $CI_COMMIT_REF_NAME != "master" ]]
+    then 
+        CI_COMMIT_REF_NAME=$(echo $CI_COMMIT_REF_NAME | tr '[:upper:]' '[:lower:]')
+        IMAGE_NAME="csp-api-manager-$CI_COMMIT_REF_NAME"
+    fi
+
+stages:
+  - build
+  - test
+  - deploy
+
+my-build:
+  image: 
+    name: artifactory.raiffeisen.ru/ext-rbru-container-community-docker/kaniko-project/executor:1.3.0
+    entrypoint: [""]
+  stage: build
+  before_script:
+    - mkdir -p /kaniko/.docker
+    - echo "$DOCKER_AUTH_CONFIG" > /kaniko/.docker/config.json
+  script:
+    - echo "Hello, $GITLAB_USER_LOGIN!"
+    - cat .m2/settings.xml
+    - *create_time_now
+    - > 
+        /kaniko/executor --context $CI_PROJECT_DIR
+        --dockerfile $CI_PROJECT_DIR/Dockerfile
+        --destination artifactory.raiffeisen.ru/csp-docker/temp/$IMAGE_NAME:$TIME_NOW
+        --build-arg ARTI_LOGIN=$ARTI_LOGIN_CI_RO
+        --build-arg ARTI_PWD=$ARTI_PWD_CI_RO
+
+helm-deploy:
+  image: artifactory.raiffeisen.ru/csp-docker/helm:latest #artifactory.raiffeisen.ru/ext-rbru-container-community-docker/cli-tools:0.1.3
+  stage: test
+  script:
+    - echo "This is cli-tools image"
+    - *create_time_now
+    - echo $CI_COMMIT_REF_NAME
+    - echo $IMAGE_NAME
+    - helm list -n default -a
+    - >
+      helm upgrade --install csp-api-manager csp-api-manager/ --namespace default
+      --set image.tag=$TIME_NOW --set image.name=artifactory.raiffeisen.ru/csp-docker/temp/$IMAGE_NAME
+    - helm list -n default 
+    
+deploy-prod:
+  image: artifactory.raiffeisen.ru/csp-docker/helm:latest #artifactory.raiffeisen.ru/ext-rbru-container-community-docker/cli-tools:0.1.3
+  stage: deploy
+  script:
+    - echo "Time commit $TIME_NOW"
+    - echo "This is cli-tools image"
+    - helm ls -n default

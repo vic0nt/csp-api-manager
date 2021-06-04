@@ -14,11 +14,10 @@ public class CommonRouter extends RouteBuilder {
     @Override
     public void configure() {
         from("timer:hello?period={{timer.period}}").routeId("hello")
-            .transform().method("myBean", "saySomething")
+            .transform().method("commonConfig", "saySomething")
             .filter(simple("${body} contains 'foo'"))
                 .to("log:foo")
             .end()
             .to("stream:out");
     }
-
 }

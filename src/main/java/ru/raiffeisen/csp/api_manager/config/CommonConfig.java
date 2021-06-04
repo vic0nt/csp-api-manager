@@ -2,14 +2,9 @@ package ru.raiffeisen.csp.api_manager.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-/**
- * A bean that returns a message when you call the {@link #saySomething()} method.
- * <p/>
- * Uses <tt>@Component("myBean")</tt> to register this bean with the name <tt>myBean</tt>
- * that we use in the Camel route to lookup this bean.
- */
-@Component("myBean")
+@Service
 public class CommonConfig {
 
     @Value("${greeting}")

@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  ibmmq:
+    image: ibmcom/mq:latest
+    restart: always
+    ports:
+      - 1414:1414
+      - 9157:9157
+      - 9443:9443
+    environment:
+      MQ_QMGR_NAME: QMMSKT09
+      LICENSE: accept

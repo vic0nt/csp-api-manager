@@ -31,7 +31,6 @@
         <appender-ref ref="ROLLING-FILE"/>
     </logger>
 
-
     <root level="INFO">
         <appender-ref ref="ROLLING-FILE"/>
     </root>

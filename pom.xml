@@ -16,6 +16,8 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <ibm.mq.version>9.2.2.0</ibm.mq.version>
         <lombok.version>1.18.20</lombok.version>
     </properties>
 
@@ -69,6 +71,11 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-stream-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jms</artifactId>
+            <version>3.8.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -83,6 +90,12 @@
             <version>5.3.7</version>
         </dependency>
 
+        <!-- MQ -->
+        <dependency>
+            <groupId>com.ibm.mq</groupId>
+            <artifactId>com.ibm.mq.allclient</artifactId>
+            <version>${ibm.mq.version}</version>
+        </dependency>
 
         <!-- Test -->
         <dependency>

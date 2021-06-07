@@ -16,3 +16,5 @@ In order to run this application locally you should satisfy following requiremen
  
 
 ## TODO
+- connection factory for IBM MQ
+- test producer for IBM MQ

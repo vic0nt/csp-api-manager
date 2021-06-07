@@ -1,1 +1,8 @@
-log.dir=.
+resources:
+  some-system:
+    ibm.mq:
+        hostname: localhost
+        port: 1414
+        queue-manager: QMMSKT09
+        channel: DEV.APP.SVRCONN
+        #queue-name: DEV.QUEUE.1

@@ -1,8 +1,9 @@
 version: "3.8"
 services:
+  # https://github.com/ibm-messaging/mq-container/blob/master/docs/developer-config.md
   ibmmq:
     image: ibmcom/mq:latest
-    restart: always
+    restart: unless-stopped
     ports:
       - 1414:1414
       - 9157:9157

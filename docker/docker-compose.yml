@@ -11,3 +11,10 @@ services:
     environment:
       MQ_QMGR_NAME: QMMSKT09
       LICENSE: accept
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.1
+    restart: unless-stopped
+    ports:
+      - 9200:9200
+    environment:
+      discovery.type: single-node

@@ -61,6 +61,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-elasticsearch</artifactId>
+        </dependency>
 
         <!-- Camel -->
         <dependency>
@@ -75,6 +79,11 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jms</artifactId>
             <version>3.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-elasticsearch</artifactId>
+            <version>2.25.4</version>
         </dependency>
 
         <dependency>

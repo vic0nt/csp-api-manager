@@ -1,9 +1,6 @@
 spring:
   profiles:
-    active: local
-
-server:
-  port: 1888
+    active: docker
 
 # Camel app name
 camel.springboot.name: CSP API Manager

@@ -1,7 +1,6 @@
 resources:
   some-system:
     ibm.mq:
-      # todo list dev environment resources here
       hostname: localhost
       port: 1414
       queue-manager: QMMSKT09

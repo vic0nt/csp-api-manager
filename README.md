@@ -13,7 +13,6 @@ So application performs following:
 ## How to run locally
 In order to run this application locally you should satisfy following requirements:
  - Java 11
- 
 
 ## TODO
 - connection factory for IBM MQ

@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 public class TextToIbmMqRouter extends RouteBuilder {
 
     @Override
-    public void configure() throws Exception {
+    public void configure() {
         from("timer:hello-mq?period={{timer.period}}").routeId("hello-mq")
                 .transform().method("textProvider", "saySomething")
-                .to("jms:DEV.QUEUE.1")
+                .to("ibm:DEV.QUEUE.1")
                 .end()
                 .to("stream:out");
     }

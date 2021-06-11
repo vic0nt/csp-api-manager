@@ -1,8 +1,10 @@
 resources:
-  some-system:
-    ibm.mq:
-      hostname: localhost
-      port: 1414
-      queue-manager: QMMSKT09
-      channel: DEV.APP.SVRCONN
-      #queue-name: DEV.QUEUE.1
+  ibm.mq:
+    hostname: localhost
+    port: 1414
+    queue-manager: QMMSKT09
+    channel: DEV.APP.SVRCONN
+    csp.request-queue: DEV.QUEUE.1
+    csp.response-queue: DEV.QUEUE.2
+    nrlms.request-queue: DEV.QUEUE.2
+    nrlms.response-queue: DEV.QUEUE.3

@@ -13,32 +13,30 @@ import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 
 @Configuration
-public class SomeSystemMqConfig {
+public class IbmMqConfig {
 
     @Bean
-    @ConfigurationProperties("resources.some-system.ibm.mq")
-    public IbmMqProps someSystemIbmMqProps() {
+    @ConfigurationProperties("resources.ibm.mq")
+    public IbmMqProps ibmMqProps() {
         return new IbmMqProps();
     }
 
-    @Bean("someSystemMQCF")
-    public ConnectionFactory someSystemConnectionFactory() throws JMSException {
+    @Bean
+    public ConnectionFactory ibmConnectionFactory() throws JMSException {
         MQQueueConnectionFactory factory = new MQQueueConnectionFactory();
         factory.setCCSID(1208);
         factory.setTransportType(CommonConstants.WMQ_CM_CLIENT);
-        factory.setHostName(someSystemIbmMqProps().getHostName());
-        factory.setPort(someSystemIbmMqProps().getPort());
-        factory.setChannel(someSystemIbmMqProps().getChannel());
-        factory.setQueueManager(someSystemIbmMqProps().getQueueManager());
+        factory.setHostName(ibmMqProps().getHostName());
+        factory.setPort(ibmMqProps().getPort());
+        factory.setChannel(ibmMqProps().getChannel());
+        factory.setQueueManager(ibmMqProps().getQueueManager());
         return factory;
     }
 
-    @Bean
-    public JmsComponent someSystemJmsComponent() throws JMSException {
+    @Bean("ibm")
+    public JmsComponent ibmJmsComponent() throws JMSException {
         JmsComponent jmsComponent = new JmsComponent();
-        jmsComponent.setConnectionFactory(someSystemConnectionFactory());
-        //jmsComponent.setCacheLevelName("CACHE_CONSUMER");
-        //jmsComponent.setMaxConcurrentConsumers(1);
+        jmsComponent.setConnectionFactory(ibmConnectionFactory());
 
         return jmsComponent;
     }

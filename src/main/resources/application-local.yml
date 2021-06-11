@@ -1,9 +1,11 @@
 resources:
-  some-system:
-    ibm.mq:
-      # todo list dev environment resources here
-      hostname: localhost
-      port: 1414
-      queue-manager: QMMSKT09
-      channel: DEV.APP.SVRCONN
-      #queue-name: DEV.QUEUE.1
+  # todo track https://jira.raiffeisen.ru/browse/MQAPI-446 for connection settings
+  ibm.mq:
+    hostname: localhost
+    port: 1414
+    queue-manager: QMMSKT09
+    channel: DEV.APP.SVRCONN
+    csp.request-queue: INT.FIS.CSP.REQ
+    csp.response-queue: INT.FIS.CSP.RESP
+    nrlms.request-queue: INT.CSP.NRLMS.REQ
+    nrlms.response-queue: INT.CSP.NRLMS.RESP

@@ -5,7 +5,9 @@ resources:
     port: 1414
     queue-manager: QMMSKT09
     channel: DEV.APP.SVRCONN
-    csp.request-queue: INT.FIS.CSP.REQ
-    csp.response-queue: INT.FIS.CSP.RESP
-    nrlms.request-queue: INT.CSP.NRLMS.REQ
-    nrlms.response-queue: INT.CSP.NRLMS.RESP
+    csp:
+      request-queue: INT.FIS.CSP.REQ
+      response-queue: INT.FIS.CSP.RESP
+    nrlms:
+      request-queue: INT.CSP.NRLMS.REQ
+      response-queue: INT.CSP.NRLMS.RESP

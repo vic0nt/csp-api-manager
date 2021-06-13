@@ -9,6 +9,7 @@ public class TextToLogRouter extends RouteBuilder {
     @Override
     public void configure() {
         from("timer:hello?period={{timer.period}}").routeId("hello")
+                .autoStartup(false)
                 .transform().method("textProvider", "saySomething")
                 .filter(simple("${body} contains 'foo'"))
                 .to("log:foo")

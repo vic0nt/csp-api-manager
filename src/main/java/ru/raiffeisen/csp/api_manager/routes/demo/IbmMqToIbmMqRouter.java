@@ -10,6 +10,7 @@ public class IbmMqToIbmMqRouter extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         from("jms:DEV.QUEUE.1").routeId("ibm_mq-to-ibm_mq")
+                .autoStartup(false)
                 .to("jms:DEV.QUEUE.2")
                 .end()
                 .log(LoggingLevel.INFO, "Processing ${body}")

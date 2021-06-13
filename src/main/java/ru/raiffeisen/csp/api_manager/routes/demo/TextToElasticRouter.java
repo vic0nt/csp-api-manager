@@ -9,9 +9,6 @@ public class TextToElasticRouter extends RouteBuilder {
 
     private String esUri = "elasticsearch-rest://docker-cluster?hostAddresses=localhost:9200&operation=INDEX&indexName=csp-api-manager-events-index";
 
-    @Value("${camel.startupRoute}")
-    private Boolean startupRoute;
-
     @Override
     public void configure() {
         from("timer:hello?period={{timer.period}}").routeId("elastic-test")

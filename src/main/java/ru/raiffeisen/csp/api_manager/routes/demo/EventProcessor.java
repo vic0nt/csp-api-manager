@@ -9,12 +9,16 @@ import java.util.Map;
 
 public class EventProcessor implements Processor {
     public void process(Exchange exchange) throws Exception {
-        //CallEvent event = exchange.getIn().getBody(CallEvent.class);
-        String event = exchange.getIn().getBody(String.class);
+
+        var event = (CallEvent) exchange.getIn().getBody();
         Map<String, Object> map = new HashMap<>();
-        map.put("value", event);
-        //map.put("id", event.getId());
-        //map.put("operationType", event.getOperationType());
+        map.put("id", event.getId());
+        map.put("operationType", event.getOperationType());
+        map.put("systemName", event.getSystemName());
+        map.put("localProductCode", event.getLocalProductCode());
+        map.put("groupProductCode", event.getGroupProductCode());
+        map.put("cnum", event.getCnum());
+        map.put("created", event.getCreated());
         exchange.getIn().setBody(map);
     }
 }

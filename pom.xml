@@ -90,6 +90,11 @@
             <artifactId>camel-elasticsearch-rest</artifactId>
             <version>3.8.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jsonpath</artifactId>
+            <version>3.8.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>

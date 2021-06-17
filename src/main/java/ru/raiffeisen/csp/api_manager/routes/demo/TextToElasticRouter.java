@@ -1,5 +1,8 @@
 package ru.raiffeisen.csp.api_manager.routes.demo;
 
+import org.apache.camel.Expression;
+import org.apache.camel.Predicate;
+import org.apache.camel.builder.PredicateBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.gson.GsonDataFormat;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,11 +22,17 @@ public class TextToElasticRouter extends RouteBuilder {
         from("timer:hello?period={{timer.period}}").routeId("elastic-test")
                 .autoStartup(true)
                 .transform().method("textProvider", "saySomething")
-                .unmarshal(dataFormat)
-                .process(new EventProcessor())
-                .to(esUri)
-                .to("log:foo")
+                //.unmarshal(dataFormat)
+                .choice()
+                    .when().jsonpath("$[?(@.operationType == 'someBusinessRequest')]")
+                        .unmarshal(dataFormat)
+                        .process(new EventProcessor())
+                        .to(esUri)
+                        .log("Processing Succeeded")
+                    .otherwise()
+                        .log("Processing Failed")
                 .end()
+                .to("log:foo")
                 .to("stream:out");
     }
 }

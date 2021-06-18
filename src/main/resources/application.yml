@@ -28,3 +28,7 @@ management:
     camelroutes:
       enabled: true
       read-only: true
+
+application:
+  camel:
+    demo-routes-autostartup: false

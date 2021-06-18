@@ -9,8 +9,9 @@ public class IbmMqToIbmMqRouter extends RouteBuilder {
 
     @Override
     public void configure() {
-        from("ibm:DEV.QUEUE.1").routeId("ibm_mq-to-ibm_mq")
-                .to("ibm:DEV.QUEUE.2")
+        from("csp:DEV.QUEUE.1").routeId("ibm_mq-to-ibm_mq")
+                .autoStartup("{{application.camel.demo-routes-autostartup}}")
+                .to("nrlms:DEV.QUEUE.2")
                 .end()
                 .log(LoggingLevel.DEBUG, "Processing ${body}")
                 .to("stream:out");

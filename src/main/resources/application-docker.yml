@@ -3,10 +3,12 @@ resources:
     hostname: localhost
     port: 1414
     queue-manager: QMMSKT09
-    channel: DEV.APP.SVRCONN
-    csp:
-      request-queue: DEV.QUEUE.1
-      response-queue: DEV.QUEUE.2
-    nrlms:
-      request-queue: DEV.QUEUE.2
-      response-queue: DEV.QUEUE.3
+    channels:
+      csp:
+        channel: DEV.APP.SVRCONN
+        request-queue: DEV.QUEUE.1
+        response-queue: DEV.QUEUE.2
+      nrlms:
+        channel: DEV.APP.SVRCONN
+        request-queue: DEV.QUEUE.2
+        response-queue: DEV.QUEUE.3

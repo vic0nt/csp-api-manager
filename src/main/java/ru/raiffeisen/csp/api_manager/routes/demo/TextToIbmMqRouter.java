@@ -9,8 +9,9 @@ public class TextToIbmMqRouter extends RouteBuilder {
     @Override
     public void configure() {
         from("timer:hello-mq?period={{timer.period}}").routeId("hello-mq")
+                .autoStartup("{{application.camel.demo-routes-autostartup}}")
                 .transform().method("textProvider", "saySomething")
-                .to("ibm:DEV.QUEUE.1")
+                .to("csp:DEV.QUEUE.1")
                 .end()
                 .to("stream:out");
     }

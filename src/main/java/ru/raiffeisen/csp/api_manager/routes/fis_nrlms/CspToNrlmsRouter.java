@@ -1,5 +1,6 @@
 package ru.raiffeisen.csp.api_manager.routes.fis_nrlms;
 
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Service;
 
@@ -8,11 +9,10 @@ public class CspToNrlmsRouter extends RouteBuilder {
 
     @Override
     public void configure() {
-        //todo uncomment after queues rollout
-        //from("ibm:{{resources.ibm.mq.csp.request-queue}}").routeId("CspToNrlms")
-        //        .to("ibm:{{resources.ibm.mq.nrlms.request-queue}}")
-        //        .end()
-        //        .log(LoggingLevel.DEBUG, "Processing ${body}")
-        //        .to("stream:out");
+        from("csp:{{resources.ibm.mq.channels.csp.request-queue}}").routeId("CspToNrlms")
+                .to("nrlms:{{resources.ibm.mq.channels.nrlms.request-queue}}")
+                .end()
+                .log(LoggingLevel.DEBUG, "Processing ${body}")
+                .to("stream:out");
     }
 }

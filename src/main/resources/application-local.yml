@@ -1,13 +1,14 @@
 resources:
-  # todo track https://jira.raiffeisen.ru/browse/MQAPI-446 for connection settings
   ibm.mq:
-    hostname: localhost
+    hostname: s-msk-t-imq011.raiffeisen.ru
     port: 1414
-    queue-manager: QMMSKT09
-    channel: DEV.APP.SVRCONN
-    csp:
-      request-queue: INT.FIS.CSP.REQ
-      response-queue: INT.FIS.CSP.RESP
-    nrlms:
-      request-queue: INT.CSP.NRLMS.REQ
-      response-queue: INT.CSP.NRLMS.RESP
+    queue-manager: QMMSKT03
+    channels:
+      csp:
+        channel: CSP.MSKT03
+        request-queue: INT.FIS.CSP.REQ
+        response-queue: INT.FIS.CSP.RESP
+      nrlms:
+        channel: NRLMS.MSKT03
+        request-queue: INT.CSP.NRLMS.REQ
+        response-queue: INT.CSP.NRLMS.RESP

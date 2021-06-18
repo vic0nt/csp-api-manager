@@ -2,3 +2,12 @@ replicaCount: 1
 image:
   name: "artifactory.raiffeisen.ru/csp-docker/temp/ping_pipe"
   tag: 3
+ports:
+  jmxJavaPort: 5555
+  jmxPrometheusPort: 9404
+apm:
+  service_name: "153-csp-api-manager"
+  environment: "preview"
+  server_urls: "http://s-msk-v-elk-apm.raiffeisen.ru:8200"
+ingress:
+  path: /csp-api-manager/?(.*)

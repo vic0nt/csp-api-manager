@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jmx-exporter-config
+data:
+  jmx_exporter_config.yaml: |-
+    hostPort: localhost:{{ .Values.ports.jmxJavaPort }}
+    username: 
+    password: 
+    rules:
+    - pattern: ".*"

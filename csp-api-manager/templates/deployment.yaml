@@ -54,10 +54,10 @@ spec:
           - name: tcp-prometheus
             containerPort: {{ .Values.ports.jmxPrometheusPort }}
           volumeMounts:
-            - name: jmx-exporter-config
+            - name: csp-api-jmx-exporter-config
               mountPath: "/jmx-exporter/jmx_exporter_config.yaml"
               subPath: jmx_exporter_config.yaml
-            - name: application-config
+            - name: csp-api-application-config
               mountPath: "/csp-api-manager/application.yaml"
               subPath: application.yaml
             - name: elastic-apm-agent
@@ -72,12 +72,12 @@ spec:
               memory: 5000Mi
               cpu: 400m
       volumes:
-        - name: jmx-exporter-config
+        - name: csp-api-jmx-exporter-config
           configMap:
-            name: jmx-exporter-config
-        - name: application-config
+            name: csp-api-jmx-exporter-config
+        - name: csp-api-application-config
           configMap:
-            name: application-config
+            name: csp-api-application-config
         - name: elastic-apm-agent 
           emptyDir: {}
         - name: jmx-exporter

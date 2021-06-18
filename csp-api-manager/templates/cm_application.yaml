@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: application-config
+  name: csp-api-application-config
 data:
   application.yaml: |-
     resources:

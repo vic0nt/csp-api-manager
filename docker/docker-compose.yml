@@ -11,10 +11,18 @@ services:
     environment:
       MQ_QMGR_NAME: QMMSKT09
       LICENSE: accept
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.1
+
+  # https://github.com/spotify/docker-kafka
+  kafka:
+    image: spotify/kafka:latest
     restart: unless-stopped
     ports:
-      - 9200:9200
+      - 2181:2181
+      - 9092:9092
     environment:
-      discovery.type: single-node
+      ADVERTISED_HOST: `boot2docker ip`
+      ADVERTISED_PORT: 9092
+      CONSUMER_THREADS: 1
+      TOPICS: super-topic
+      ZK_CONNECT: kafka7zookeeper:2181/root/path
+      GROUP_ID: super-mirror

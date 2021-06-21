@@ -11,9 +11,6 @@ camel.springboot.name: CSP API Manager
 # add for example: &repeatCount=5 to the timer endpoint to make Camel idle
 #camel.springboot.duration-max-idle-seconds=15
 
-# what to say
-greeting: Hello World
-
 # how often to trigger the timer
 timer.period: 2000
 
@@ -31,4 +28,4 @@ management:
 
 application:
   camel:
-    demo-routes-autostartup: false
+    demo-routes-autostartup: true

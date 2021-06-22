@@ -21,8 +21,6 @@ timer.period: 2000
 
 management:
   endpoints:
-    web:
-      base-path: /csp-api-manager/actuator
     web.exposure.include: info,health,camelroutes
     # turn on actuator health check
     health.enabled: true

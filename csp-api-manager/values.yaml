@@ -6,7 +6,7 @@ ports:
   jmxJavaPort: 5555
   jmxPrometheusPort: 9404
 apm:
-  service_name: "153-csp-cig-generating-account-properties"
+  service_name: "153-csp-cig-get-account-info"
   environment: "preview"
   server_urls: "http://s-msk-v-elk-apm.raiffeisen.ru:8200"
 ingress:

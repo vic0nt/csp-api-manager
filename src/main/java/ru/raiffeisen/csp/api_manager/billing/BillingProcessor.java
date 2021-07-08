@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.stereotype.Service;
+import ru.raiffeisen.csp.api_manager.common.JsonUtils;
 
 import java.time.OffsetDateTime;
 
@@ -23,6 +24,6 @@ public class BillingProcessor implements Processor {
 
         log.info("{}", event);
 
-        exchange.getIn().setBody(event);
+        exchange.getIn().setBody(JsonUtils.jsonify(event));
     }
 }

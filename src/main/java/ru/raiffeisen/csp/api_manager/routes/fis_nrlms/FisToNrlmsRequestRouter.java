@@ -5,16 +5,15 @@ import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CspToNrlmsRequestRouter extends RouteBuilder {
+public class FisToNrlmsRequestRouter extends RouteBuilder {
 
     @Override
     public void configure() {
-        from("csp:{{resources.ibm.mq.channels.csp.request-queue}}").routeId("CspToNrlms")
+        from("csp:{{resources.ibm.mq.channels.csp.request-queue}}").routeId("FisToNrlms")
                 .to("nrlms:{{resources.ibm.mq.channels.nrlms.request-queue}}")
                 .log(LoggingLevel.DEBUG, "Processing ${body}")
                 .end()
                 .process("billingProcessor")
                 .to("kafka:{{resources.kafka.topicName}}?brokers={{resources.kafka.brokers}}");
-                //todo create POJO with application name and route1-route2 ids + created timestamp
     }
 }

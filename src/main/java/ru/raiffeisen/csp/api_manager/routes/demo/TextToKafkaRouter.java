@@ -11,7 +11,7 @@ public class TextToKafkaRouter extends RouteBuilder {
         from("timer:hello-kafka?period={{timer.period}}").routeId("hello-kafka")
                 .autoStartup("{{application.camel.demo-routes-autostartup}}")
                 .transform().method("textProvider", "sayHelloKafka")
-                .to("kafka:super-topic?brokers=172.20.0.3:9092")
+                .to("kafka:{{resources.kafka.topicName}}?brokers={{resources.kafka.brokers}}")
                 .end()
                 .to("stream:out");
     }

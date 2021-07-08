@@ -5,14 +5,13 @@ import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CspToNrlmsRouter extends RouteBuilder {
+public class NrlmsToCspResponseRouter extends RouteBuilder {
 
     @Override
     public void configure() {
-        from("csp:{{resources.ibm.mq.channels.csp.request-queue}}").routeId("CspToNrlms")
-                .to("nrlms:{{resources.ibm.mq.channels.nrlms.request-queue}}")
-                .end()
+        from("nrlms:{{resources.ibm.mq.channels.nrlms.response-queue}}").routeId("NrlmsToCsp")
+                .to("csp:{{resources.ibm.mq.channels.csp.response-queue}}")
                 .log(LoggingLevel.DEBUG, "Processing ${body}")
-                .to("stream:out");
+                .end();
     }
 }

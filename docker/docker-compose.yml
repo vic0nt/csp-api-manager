@@ -12,7 +12,7 @@ services:
       MQ_QMGR_NAME: QMMSKT09
       LICENSE: accept
 
-  # https://hub.docker.com/r/spotify/kafka
+  # https://github.com/wurstmeister/kafka-docker
   zookeeper:
     image: wurstmeister/zookeeper:latest
     ports:

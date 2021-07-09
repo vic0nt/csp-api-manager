@@ -58,8 +58,8 @@ spec:
               mountPath: "/jmx-exporter/jmx_exporter_config.yaml"
               subPath: jmx_exporter_config.yaml
             - name: csp-api-application-config
-              mountPath: "/csp-api-manager/application.yaml"
-              subPath: application.yaml
+              mountPath: "/csp-api-manager/application.yml"
+              subPath: application.yml
             - name: elastic-apm-agent
               mountPath: /elastic/apm/agent
             - name: jmx-exporter
@@ -78,7 +78,10 @@ spec:
         - name: csp-api-application-config
           configMap:
             name: csp-api-application-config
-        - name: elastic-apm-agent 
+            items:
+              - key: "application.yml"
+                path: "application.yml"
+        - name: elastic-apm-agent
           emptyDir: {}
         - name: jmx-exporter
           emptyDir: {} 

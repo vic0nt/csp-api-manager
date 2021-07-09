@@ -20,6 +20,7 @@
         <ibm.mq.version>9.2.2.0</ibm.mq.version>
         <lombok.version>1.18.20</lombok.version>
         <vavr.version>0.10.3</vavr.version>
+        <jackson.version>2.12.3</jackson.version>
     </properties>
 
     <parent>
@@ -66,6 +67,10 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jms</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-kafka</artifactId>
+        </dependency>
 
         <!-- Misc -->
         <dependency>
@@ -77,6 +82,28 @@
             <groupId>io.vavr</groupId>
             <artifactId>vavr</artifactId>
             <version>${vavr.version}</version>
+        </dependency>
+
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- Added due Spring dependency hell for avoidance of 5.3.3 version -->

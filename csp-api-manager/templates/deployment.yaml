@@ -45,9 +45,10 @@ spec:
             - "-Delastic.apm.server_urls={{ .Values.apm.server_urls }}"
             - "-javaagent:/jmx-exporter/jmx_prometheus_javaagent.jar={{ .Values.ports.jmxPrometheusPort }}:/jmx-exporter/jmx_exporter_config.yaml"
             - "-javaagent:/elastic/apm/agent/elastic-apm-agent.jar"
+            - "-Dspring.profiles.active=dev"
             - "-jar"
             - "csp-api-manager.jar"
-            - "--spring.config.import=file:///csp-api-manager/application.yaml"
+            - "--spring.config.import=file:///csp-api-manager/application-dev.yml"
           ports:
           - name: http
             containerPort: 8080
@@ -58,8 +59,8 @@ spec:
               mountPath: "/jmx-exporter/jmx_exporter_config.yaml"
               subPath: jmx_exporter_config.yaml
             - name: csp-api-application-config
-              mountPath: "/csp-api-manager/application.yml"
-              subPath: application.yml
+              mountPath: "/csp-api-manager/application-dev.yml"
+              subPath: application-dev.yml
             - name: elastic-apm-agent
               mountPath: /elastic/apm/agent
             - name: jmx-exporter
@@ -79,8 +80,8 @@ spec:
           configMap:
             name: csp-api-application-config
             items:
-              - key: "application.yml"
-                path: "application.yml"
+              - key: "application-dev.yml"
+                path: "application-dev.yml"
         - name: elastic-apm-agent
           emptyDir: {}
         - name: jmx-exporter

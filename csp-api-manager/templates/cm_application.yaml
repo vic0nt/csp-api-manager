@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: csp-api-application-config
 data:
-  application-dev.yaml: |-
+  application-dev.yml: |-
     application:
       camel:
         demo-routes-autostartup: false

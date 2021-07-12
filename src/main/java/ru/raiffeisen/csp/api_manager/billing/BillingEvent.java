@@ -12,6 +12,7 @@ import java.time.OffsetDateTime;
 public class BillingEvent {
 
     private final String applicationName;
+    private final String environment;
 
     private final String id;
     private final String routeId;

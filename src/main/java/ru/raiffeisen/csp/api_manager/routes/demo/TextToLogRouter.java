@@ -10,7 +10,7 @@ public class TextToLogRouter extends RouteBuilder {
     public void configure() {
         from("timer:hello?period={{timer.period}}").routeId("hello")
                 .autoStartup("{{application.camel.demo-routes-autostartup}}")
-                .transform().method("textProvider", "saySomething")
+                .transform().method("textProvider", "sayHelloWorld")
                 .filter(simple("${body} contains 'foo'"))
                 .to("log:foo")
                 .end()

@@ -15,10 +15,12 @@ services:
   # https://github.com/wurstmeister/kafka-docker
   zookeeper:
     image: wurstmeister/zookeeper:latest
+    restart: unless-stopped
     ports:
       - "2181:2181"
   kafka:
     image: wurstmeister/kafka:latest
+    restart: unless-stopped
     ports:
       - "9092:9092"
     environment:

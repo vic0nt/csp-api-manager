@@ -19,3 +19,6 @@ resources:
   kafka:
     brokers: s-msk-v-elk-mq1.raiffeisen.ru:9092,s-msk-v-elk-mq2.raiffeisen.ru:9092,s-msk-v-elk-mq3.raiffeisen.ru:9092
     topicName: elk-v-core-services
+
+  activemq:
+    broker-url: tcp://localhost:61616

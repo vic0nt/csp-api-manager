@@ -19,3 +19,6 @@ resources:
   kafka:
     brokers: 127.0.0.1:9092
     topicName: super-topic
+
+  activemq:
+    broker-url: tcp://localhost:61616

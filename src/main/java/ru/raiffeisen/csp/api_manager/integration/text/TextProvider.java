@@ -5,12 +5,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class TextProvider {
 
-    public String saySomething() {
+    public String sayHelloMq() {
         return "Hello MQ!";
     }
 
     public String sayHelloKafka() {
         return "Hello Kafka!";
+    }
+
+    public String sayHelloWorld() {
+        return "Hello World!";
     }
 
 }

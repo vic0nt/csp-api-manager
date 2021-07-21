@@ -18,6 +18,7 @@ public class BillingProcessor implements Processor {
     private static final String APPLICATION_NAME = "csp-billing";
     private final Environment environment;
 
+    @Override
     public void process(Exchange exchange) {
         var event = BillingEvent.builder()
                 .applicationName(APPLICATION_NAME)

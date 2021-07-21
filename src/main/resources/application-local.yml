@@ -1,21 +1,23 @@
+spring:
+  config:
+    import: queues-local.yml
+
 application:
   camel:
     demo-routes-autostartup: true
 
 resources:
-  ibm.mq:
+  ibm.mq.fis:
     hostname: s-msk-t-imq011.raiffeisen.ru
     port: 1414
     queue-manager: QMMSKT03
-    channels:
-      csp:
-        channel: CSP.MSKT03
-        request-queue: INT.FIS.CSP.REQ
-        response-queue: INT.FIS.CSP.RESP
-      nrlms:
-        channel: NRLMS.MSKT03
-        request-queue: INT.CSP.NRLMS.REQ
-        response-queue: INT.CSP.NRLMS.RESP
+    channel: CSP.MSKT03
+  ibm.mq.nrlms:
+    hostname: s-msk-t-imq011.raiffeisen.ru
+    port: 1414
+    queue-manager: QMMSKT03
+    channel: NRLMS.MSKT03
+
   kafka:
     brokers: s-msk-v-elk-mq1.raiffeisen.ru:9092,s-msk-v-elk-mq2.raiffeisen.ru:9092,s-msk-v-elk-mq3.raiffeisen.ru:9092
     topicName: elk-v-core-services

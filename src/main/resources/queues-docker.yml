@@ -1,0 +1,23 @@
+# common rules:
+# - csp always "man in the middle" for a node entry name e.g. fis-csp-nrlms, nrlms-csp-fis. Common sense - we can see
+# systems connection path by just looking at the configuration
+# - integration path works as it looks: take message from [0] queue and put it into [1] queue e.g. [DEV.QUEUE.1, DEV.QUEUE.2] == DEV.QUEUE.1 -> DEV.QUEUE.2
+queues:
+  fis-csp-nrlms: [DEV.QUEUE.1, DEV.QUEUE.2]
+  nrlms-csp-fis: [DEV.QUEUE.2, DEV.QUEUE.3]
+
+  #.REQ -> .REQ.PROXIED
+  #.RESP.PROXIED -> .RESP
+  #.ERR.PROXIED -> .ERR
+  factoring-csp-factoring_proxied-create_deal: [INT.FACTORING.CSP.CREATEFACTORINGDEAL.REQ, INT.FACTORING.CSP.CREATEFACTORINGDEAL.REQ.PROXIED]
+  factoring-csp-factoring_proxied-change_close_date: [INT.FACTORING.CSP.CHANGEFACTORINGDEALCLOSEDATE.REQ, INT.FACTORING.CSP.CHANGEFACTORINGDEALCLOSEDATE.REQ.PROXIED]
+  factoring-csp-factoring_proxied-create_rep: [INT.FACTORING.CSP.CREATEFACTORINGREPAYMENT.REQ, INT.FACTORING.CSP.CREATEFACTORINGREPAYMENT.REQ.PROXIED]
+
+  factoring_proxied-csp-factoring-create_deal: [INT.FACTORING.CSP.CREATEFACTORINGDEAL.RESP.PROXIED, INT.FACTORING.CSP.CREATEFACTORINGDEAL.RESP]
+  factoring_proxied-csp-factoring-change_close_date: [INT.FACTORING.CSP.CHANGEFACTORINGDEALCLOSEDATE.RESP.PROXIED, INT.FACTORING.CSP.CHANGEFACTORINGDEALCLOSEDATE.RESP]
+  factoring_proxied-csp-factoring-create_rep: [INT.FACTORING.CSP.CREATEFACTORINGREPAYMENT.RESP.PROXIED, INT.FACTORING.CSP.CREATEFACTORINGREPAYMENT.RESP]
+
+  factoring_proxied-csp-factoring-create_deal_err: [INT.FACTORING.CSP.CREATEFACTORINGDEAL.ERR.PROXIED, INT.FACTORING.CSP.CREATEFACTORINGDEAL.ERR]
+  factoring_proxied-csp-factoring-change_close_date_err: [INT.FACTORING.CSP.CHANGEFACTORINGDEALCLOSEDATE.ERR.PROXIED, INT.FACTORING.CSP.CHANGEFACTORINGDEALCLOSEDATE.ERR]
+  factoring_proxied-csp-factoring-create_rep_err: [INT.FACTORING.CSP.CREATEFACTORINGREPAYMENT.ERR.PROXIED, INT.FACTORING.CSP.CREATEFACTORINGREPAYMENT.ERR]
+

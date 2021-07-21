@@ -1,0 +1,17 @@
+- route:
+    id: "FisToNrlms"
+    from: "fis:{{queues.fis-csp-nrlms[0]}}"
+    steps:
+      - to:
+          uri: "fis:{{queues.fis-csp-nrlms[1]}}"
+      - process:
+          ref: "billingProcessor"
+      - to:
+          uri: "kafka:{{resources.kafka.topicName}}?brokers={{resources.kafka.brokers}}"
+
+- route:
+    id: "NrlmsToFis"
+    from: "nrlms:{{queues.nrlms-csp-fis[0]}}"
+    steps:
+      - to:
+          uri: "nrlms:{{queues.nrlms-csp-fis[1]}}"

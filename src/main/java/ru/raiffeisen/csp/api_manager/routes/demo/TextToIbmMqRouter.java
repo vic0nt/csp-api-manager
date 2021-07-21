@@ -11,7 +11,7 @@ public class TextToIbmMqRouter extends RouteBuilder {
         from("timer:hello-mq?period={{timer.period}}").routeId("hello-mq")
                 .autoStartup("{{application.camel.demo-routes-autostartup}}")
                 .transform().method("textProvider", "sayHelloMq")
-                .to("csp:DEV.QUEUE.1")
+                .to("fis:{{queues.fis-csp-nrlms[0]}}")
                 .end()
                 .to("stream:out");
     }

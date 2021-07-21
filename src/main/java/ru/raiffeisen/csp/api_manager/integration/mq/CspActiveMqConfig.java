@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @Slf4j
-public class ActiveMqConfig {
+public class CspActiveMqConfig {
 
     @Bean
     @ConfigurationProperties("resources.activemq")

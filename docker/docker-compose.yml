@@ -11,10 +11,22 @@ services:
     environment:
       MQ_QMGR_NAME: QMMSKT09
       LICENSE: accept
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.1
+
+  # https://github.com/wurstmeister/kafka-docker
+  zookeeper:
+    image: wurstmeister/zookeeper:latest
     restart: unless-stopped
     ports:
-      - 9200:9200
+      - "2181:2181"
+  kafka:
+    image: wurstmeister/kafka:latest
+    restart: unless-stopped
+    ports:
+      - "9092:9092"
     environment:
-      discovery.type: single-node
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_CREATE_TOPICS: "super-topic:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+

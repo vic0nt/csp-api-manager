@@ -1,16 +1,20 @@
 package ru.raiffeisen.csp.api_manager.integration.text;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TextProvider {
 
-    @Value("${greeting}")
-    private String say;
+    public String sayHelloMq() {
+        return "Hello MQ!";
+    }
 
-    public String saySomething() {
-        return say;
+    public String sayHelloKafka() {
+        return "Hello Kafka!";
+    }
+
+    public String sayHelloWorld() {
+        return "Hello World!";
     }
 
 }

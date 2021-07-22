@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: csp-api-application-config
+data:
+  application-dev.yml: |-
+    application:
+      camel:
+        demo-routes-autostartup: false
+
+    resources:
+      ibm.mq:
+        hostname: s-msk-t-imq011.raiffeisen.ru
+        port: 1414
+        queue-manager: QMMSKT03
+        channels:
+          csp:
+            channel: CSP.MSKT03
+            request-queue: INT.FIS.CSP.REQ
+            response-queue: INT.FIS.CSP.RESP
+          nrlms:
+            channel: NRLMS.MSKT03
+            request-queue: INT.CSP.NRLMS.REQ
+            response-queue: INT.CSP.NRLMS.RESP
+      kafka:
+        brokers: s-msk-v-elk-mq1.raiffeisen.ru:9092,s-msk-v-elk-mq2.raiffeisen.ru:9092,s-msk-v-elk-mq3.raiffeisen.ru:9092
+        topicName: elk-v-core-services
+
+    

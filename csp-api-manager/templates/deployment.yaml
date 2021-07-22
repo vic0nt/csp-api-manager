@@ -48,7 +48,7 @@ spec:
             - "-Dspring.profiles.active=dev"
             - "-jar"
             - "csp-api-manager.jar"
-            - "--spring.config.import=file:///csp-api-manager/application-dev.yml"
+            - "--spring.config.location=file:///csp-api-manager/"
           ports:
           - name: http
             containerPort: 8080
@@ -61,6 +61,9 @@ spec:
             - name: csp-api-application-config
               mountPath: "/csp-api-manager/application-dev.yml"
               subPath: application-dev.yml
+            - name: csp-api-queues-config
+              mountPath: "/csp-api-manager/queues-dev.yml"
+              subPath: queues-dev.yml
             - name: elastic-apm-agent
               mountPath: /elastic/apm/agent
             - name: jmx-exporter
@@ -82,6 +85,12 @@ spec:
             items:
               - key: "application-dev.yml"
                 path: "application-dev.yml"
+        - name: csp-api-queues-config
+          configMap:
+            name: csp-api-queues-config
+            items:
+              - key: "queues-dev.yml"
+                path: "queues-dev.yml"
         - name: elastic-apm-agent
           emptyDir: {}
         - name: jmx-exporter

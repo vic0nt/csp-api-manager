@@ -12,6 +12,13 @@ services:
       MQ_QMGR_NAME: QMMSKT09
       LICENSE: accept
 
+  activemq:
+    image: rmohr/activemq:latest
+    restart: unless-stopped
+    ports:
+      - 61616:61616
+      - 8161:8161
+
   # https://github.com/wurstmeister/kafka-docker
   zookeeper:
     image: wurstmeister/zookeeper:latest

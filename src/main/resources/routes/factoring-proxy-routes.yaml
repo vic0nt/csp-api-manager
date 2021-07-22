@@ -1,0 +1,72 @@
+- route:
+    id: "FactoringToFactoring_proxied-create_deal"
+    from: "amq:{{queues.factoring-csp-factoring_proxied-create_deal[0]}}"
+    steps:
+      - to:
+          uri: "amq:{{queues.factoring-csp-factoring_proxied-create_deal[1]}}"
+
+- route:
+    id: "FactoringToFactoring_proxied-change_close_date"
+    from: "amq:{{queues.factoring-csp-factoring_proxied-change_close_date[0]}}"
+    steps:
+      - to:
+          uri: "amq:{{queues.factoring-csp-factoring_proxied-change_close_date[1]}}"
+
+- route:
+    id: "FactoringToFactoring_proxied-create_rep"
+    from: "amq:{{queues.factoring-csp-factoring_proxied-create_rep[0]}}"
+    steps:
+      - to:
+          uri: "amq:{{queues.factoring-csp-factoring_proxied-create_rep[1]}}"
+
+- route:
+    id: "Factoring_proxiedToFactoring-create_deal"
+    from: "amq:{{queues.factoring_proxied-csp-factoring-create_deal[0]}}"
+    steps:
+      - to:
+          uri: "amq:{{queues.factoring_proxied-csp-factoring-create_deal[1]}}"
+
+- route:
+    id: "Factoring_proxiedToFactoring-change_close_date"
+    from: "amq:{{queues.factoring_proxied-csp-factoring-change_close_date[0]}}"
+    steps:
+      - to:
+          uri: "amq:{{queues.factoring_proxied-csp-factoring-change_close_date[1]}}"
+
+- route:
+    id: "Factoring_proxiedToFactoring-create_rep"
+    from: "amq:{{queues.factoring_proxied-csp-factoring-create_rep[0]}}"
+    steps:
+      - to:
+          uri: "amq:{{queues.factoring_proxied-csp-factoring-create_rep[1]}}"
+
+- route:
+    id: "Factoring_proxiedToFactoring-create_deal_err"
+    from: "amq:{{queues.factoring_proxied-csp-factoring-create_deal_err[0]}}"
+    steps:
+      - to:
+          uri: "amq:{{queues.factoring_proxied-csp-factoring-create_deal_err[1]}}"
+
+- route:
+    id: "Factoring_proxiedToFactoring-change_close_date_err"
+    from: "amq:{{queues.factoring_proxied-csp-factoring-change_close_date_err[0]}}"
+    steps:
+      - to:
+          uri: "amq:{{queues.factoring_proxied-csp-factoring-change_close_date_err[1]}}"
+
+- route:
+    id: "Factoring_proxiedToFactoring-create_rep_err"
+    from: "amq:{{queues.factoring_proxied-csp-factoring-create_rep_err[0]}}"
+    steps:
+      - to:
+          uri: "amq:{{queues.factoring_proxied-csp-factoring-create_rep_err[1]}}"
+
+
+
+
+
+
+
+
+
+

@@ -3,10 +3,19 @@ spring:
     active: docker
 
 # Camel app name
-camel:
-  springboot:
-    name: CSP API Manager
-    routes-include-pattern: classpath:routes/*
+camel.springboot.name: CSP API Manager
+# to automatic shutdown the JVM after a period of time
+#camel.springboot.duration-max-seconds=60
+#camel.springboot.duration-max-messages=100
+
+# add for example: &repeatCount=5 to the timer endpoint to make Camel idle
+#camel.springboot.duration-max-idle-seconds=15
+
+# what to say
+greeting: '{"id":"b2806bd0-ebdf-45c3-ab00-c4f65337e8bf","operationType":"someBusinessRequest","systemName":"someSystemName","localProductCode":"100","groupProductCode":"200","cnum":"236453","created":"2021-06-13 17:15:04"}'
+
+# do routes start automatically?
+camel.startupRoute: false
 
 # how often to trigger the timer
 timer.period: 2000

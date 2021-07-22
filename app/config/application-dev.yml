@@ -6,3 +6,8 @@ resources:
       queue-manager: QMMSKT09
       channel: DEV.APP.SVRCONN
       #queue-name: DEV.QUEUE.1
+    elasticsearch:
+      hostname: localhost
+      port: 9200
+      cluster-name: docker-cluster
+      index-name: csp-api-manager-events-index

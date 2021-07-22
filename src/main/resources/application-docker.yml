@@ -1,24 +1,13 @@
-application:
-  camel:
-    demo-routes-autostartup: true
-
 resources:
-  ibm.mq:
-    hostname: localhost
-    port: 1414
-    queue-manager: QMMSKT09
-    channels:
-      csp:
-        channel: DEV.APP.SVRCONN
-        request-queue: DEV.QUEUE.1
-        response-queue: DEV.QUEUE.2
-      nrlms:
-        channel: DEV.APP.SVRCONN
-        request-queue: DEV.QUEUE.2
-        response-queue: DEV.QUEUE.3
-  kafka:
-    brokers: 127.0.0.1:9092
-    topicName: super-topic
-
-  activemq:
-    broker-url: tcp://localhost:61616
+  some-system:
+    ibm.mq:
+      hostname: localhost
+      port: 1414
+      queue-manager: QMMSKT09
+      channel: DEV.APP.SVRCONN
+      #queue-name: DEV.QUEUE.1
+    elasticsearch:
+      hostname: localhost
+      port: 9200
+      cluster-name: docker-cluster
+      index-name: csp-api-manager-events-index
